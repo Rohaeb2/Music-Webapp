@@ -1,0 +1,23 @@
+{
+  "name": "music-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Rohaeb2/Music-Webapp#readme",
+  "bugs": {
+    "url": "https://github.com/Rohaeb2/Music-Webapp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rohaeb2/Music-Webapp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
