@@ -2,25 +2,20 @@
   "name": "music-webapp",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/Rohaeb2/Music-Webapp#readme",
-  "bugs": {
-    "url": "https://github.com/Rohaeb2/Music-Webapp/issues"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rohaeb2/Music-Webapp.git"
   },
-  "license": "ISC",
+  "keywords": [],
   "author": "",
+  "license": "ISC",
   "type": "commonjs",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bugs": {
+    "url": "https://github.com/Rohaeb2/Music-Webapp/issues"
   },
-  "dependencies": {
-    "bcrpyt": "^2.0.0",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "mysql2": "^3.22.3"
-  }
+  "homepage": "https://github.com/Rohaeb2/Music-Webapp#readme"
 }
