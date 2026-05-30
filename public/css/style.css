@@ -1,8 +1,44 @@
+:root{
+    --primary-color:white;
+    --color-text-primary: black;
+
+}
+[data-theme="light"]{
+    --bg: white;
+    --text:black;
+}
 body{
-    background-color: white;
+    background-color: var(--primary-color);
+    color: var(--color-text-primary);
+}
+header{
+    text-align: left;
+    padding: 10px;
+}
+a:link{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+}
+a{
     color: black;
 }
-#login-form{
-    background-color: white;
+.header-left{
+    padding-left: 2%;
 }
-
+.nav-links{
+    display: flex;
+    list-style-type: none;
+    margin: 3px;
+    background-color:grey;
+}
+.nav-links li a{
+    display: block;
+    text-decoration: none;
+    padding:14px 20px;
+}
+.nav-links li a:hover{
+    background-color: azure;
+    color: black;
+}
