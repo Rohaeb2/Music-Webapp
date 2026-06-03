@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Welcome to the Music Profile App</h1>
-    <div id="login-form">
+    <header>
+         <div class="header-container">
+            <div class="header-left">
+            <h1><a href="/">Wavelength</a></h1>
+            </div>
+    </header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/">About us</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+            <main>
+    <div class="login-main-content">
+            <div id="login-form">
+            <h2>Please login Below</h2>
         <form action="/auth/login" method="post">
             <div class="form-group">
                 <label for="username">Username</label><br>
@@ -18,8 +33,13 @@
                 <label for="password">Password</label><br>
                 <input type="password" id="password" name="password"><br>
             </div>
-            <button type="submit">Login</button>
+            <button class="button" type="submit">Login</button><br>
+            <a id="forgot-password" href="/">Forgot Password?</a><br>
+            <button class="button" type="submit">Sign Up</button>
         </form>
-    </div>
+        </div>
+        <img class="content-img"   src="/images/login-img.jpg" alt="dj-playing-music">
+        
+</div>
 </body>
 </html>
