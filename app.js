@@ -3,6 +3,7 @@ const path = require('path')
 const app = express();
 const port = 3000;
 const AuthRouters = require("./routes/auth.js")
+const DashboardRouters = require("./routes/dashboard.js")
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true }))
@@ -12,7 +13,7 @@ app.get('/',(req,res) =>{
 });
 
 app.use('/auth', AuthRouters)
-
+app.use('/Wavelength', DashboardRouters)
 
 
 app.listen(port,()=>{
