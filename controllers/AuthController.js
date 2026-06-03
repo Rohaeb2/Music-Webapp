@@ -1,25 +1,33 @@
 const path = require('path')
+const userModel = require('../models/UserModel')
+
+
 class AuthController{
     constructor(){
         this.showLogin = this.showLogin.bind(this)
     }
-    showLogin(req,res){
+    static showLogin(req,res){
         try{
         res.sendFile(path.join(__dirname,'..','views','login.html'))
-        console.log("success")
     } catch (err){
         res.status(500).send("Something went wrong")
     }
     }
-    verifyLogin(req,res){
+     static async verifyLogin(req,res){
         try{
-            console.log(req)
-            res.send("hello")
+            const username = req.body.username;
+            const result = await userModel.verifyUser(username)
+            if (result === null){
+                return None
+            }
+            res.redirect('/Wavelength/dashboard')
+            console.log("ehh")
+
         
     } catch (err){
         console.log("pass")
     }
     }
 }
-module.exports = new AuthController()
+module.exports = AuthController;
  
