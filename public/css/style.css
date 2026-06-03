@@ -1,6 +1,6 @@
 :root{
-    --primary-color:white;
-    --color-text-primary: black;
+    --primary-color:black;
+    --color-text-primary:rgb(228, 219, 219);
 
 }
 [data-theme="light"]{
@@ -16,22 +16,25 @@ header{
     padding: 10px;
 }
 a:link{
-    text-decoration: none;
+    text-decoration: var(--color-text-primary);
 }
 a:visited{
     text-decoration: none;
 }
 a{
-    color: black;
+    color: var(--color-text-primary)
 }
 .header-left{
     padding-left: 2%;
 }
 .nav-links{
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     list-style-type: none;
     margin: 3px;
-    background-color:grey;
+    background-color:rgba(5, 13, 49, 0.893);
 }
 .nav-links li a{
     display: block;
@@ -39,6 +42,47 @@ a{
     padding:14px 20px;
 }
 .nav-links li a:hover{
-    background-color: azure;
-    color: black;
+    background-color: rgb(1, 8, 8);
+    color: white;
+}
+.main-content{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    padding-left: 20px;
+    justify-content: flex-end;
+}
+.login-main-content{
+    background-size:100% 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    gap: 5rem;
+    justify-content: flex-start;
+    background-repeat: no-repeat;
+}
+.content-img{
+    width: 1400px;
+    height: 400px;
+    object-fit: cover;
+}
+#login-form{
+    padding-left: 20px;
+    background-color:transparent;
+}
+.button{
+    background-color:#122c53;
+    border-color: black;
+    border-style: solid;
+    color:white;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 12px;
+    
+}
+.form-group{
+    text-decoration: underline;
+}
+#forgot-password{
+    padding-left: 40px;
 }
