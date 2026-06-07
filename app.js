@@ -1,14 +1,29 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path')
 const app = express();
 const port = 3000;
 const AuthRouters = require("./routes/auth.js")
 const DashboardRouters = require("./routes/dashboard.js")
+const session = require('express-session')
+
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true }))
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 *1000
+    }
+}))
 
 app.get('/',(req,res) =>{
+    req.session.name = "session"
+    console.log(session.name)
     res.sendFile(path.join(__dirname,'','views','home.html'))
 });
 
