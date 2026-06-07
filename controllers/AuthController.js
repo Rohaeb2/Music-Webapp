@@ -1,5 +1,6 @@
 const path = require('path')
-const userModel = require('../models/UserModel')
+const AuthService = require('../services/AuthService');
+const session = require('express-session')
 
 
 class AuthController{
@@ -7,6 +8,7 @@ class AuthController{
         this.showLogin = this.showLogin.bind(this)
     }
     static showLogin(req,res){
+        console.log(req)
         try{
         res.sendFile(path.join(__dirname,'..','views','login.html'))
     } catch (err){
@@ -16,16 +18,18 @@ class AuthController{
      static async verifyLogin(req,res){
         try{
             const username = req.body.username;
-            const result = await userModel.verifyUser(username)
-            if (result === null){
-                return None
+            const password = req.body.password;
+            const result = await AuthService.login(username,password)
+            if (result.checkPassword === false){
+                return 
             }
-            res.redirect('/Wavelength/dashboard')
-            console.log("ehh")
+            if (result.checkPassword  === true){
+                 req.session.userID = result.userData[0][0].id;
+                res.redirect('/Wavelength/dashboard')
 
-        
+            }
     } catch (err){
-        console.log("pass")
+        console.log(err)
     }
     }
 }
