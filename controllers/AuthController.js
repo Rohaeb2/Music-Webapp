@@ -3,11 +3,12 @@ const AuthService = require('../services/AuthService');
 const session = require('express-session')
 
 
+
 class AuthController{
     constructor(){
         this.showLogin = this.showLogin.bind(this)
     }
-    static showLogin(req,res){
+    showLogin(req,res){
         console.log(req)
         try{
         res.sendFile(path.join(__dirname,'..','views','login.html'))
@@ -15,23 +16,25 @@ class AuthController{
         res.status(500).send("Something went wrong")
     }
     }
-     static async verifyLogin(req,res){
+    async verifyLogin(req,res){
         try{
             const username = req.body.username;
             const password = req.body.password;
             const result = await AuthService.login(username,password)
             if (result.checkPassword === false){
-                return 
+                res.send("Failed login") 
             }
             if (result.checkPassword  === true){
-                 req.session.userID = result.userData[0][0].id;
+                req.session.userID = result.userId
+                req.session.save()
+                console.log(req.session.userID)
                 res.redirect('/Wavelength/dashboard')
 
             }
     } catch (err){
-        console.log(err)
+        //console.log(err)
     }
     }
 }
-module.exports = AuthController;
+module.exports = new AuthController;
  
