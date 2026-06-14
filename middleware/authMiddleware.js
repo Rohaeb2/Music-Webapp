@@ -1,10 +1,9 @@
 const path = require('path')
-const session = require('express-session')
 function isLoggedIn(req,res,next){
     if (req.session.userID){
         next()
     } else{
-        console.log("not")
+        console.log("not",req.session.userID)
         res.redirect("/auth/login")
     }
 }
