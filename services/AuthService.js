@@ -5,15 +5,17 @@ const bcrypt = require("bcrypt")
 class AuthService{
     constructor(){
     }
-    static async  login (username,password){
+    async login (username,password){
         const inputPassword = password
-        const verifiedUser = await userModel.verifyUser(username)
-        const hashedPassword = verifiedUser[0][0].password_hash;
+        let verifiedUser = await userModel.verifyUser(username)
+        verifiedUser = verifiedUser[0][0]
+        const hashedPassword = verifiedUser.password_hash;
         try{
             const result = await bcrypt.compare(inputPassword,hashedPassword)
             const user = {
                 userData: verifiedUser,
-                checkPassword: result
+                checkPassword: result,
+                userId : verifiedUser.id
             }
             return user
         } catch (err){
@@ -23,4 +25,4 @@ class AuthService{
     }
 };
 
-module.exports = AuthService;
+module.exports = new AuthService;
