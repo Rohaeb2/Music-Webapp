@@ -1,5 +1,5 @@
-const crypto = require('crypto')
-const querystring = require('querystring')
+
+const SpotifyService = require('../services/SpotifyService');
 require('dotenv').config()
 
 class SpotifyController{
@@ -7,21 +7,23 @@ class SpotifyController{
 
     }
     async connectSpotify(req,res){
-        //res.send('hi')
-        //const state = crypto.randomBytes(16).toString('hex')
-
-        res.redirect('https://accounts.spotify.com/authorize?'+
-            querystring.stringify({
-                response_type: 'code',
-                client_id: process.env.SPOTIFY_CLIENT_ID,
-                redirect_uri: process.env.SPOTIFY_REDIRECT_URL,
-                state: crypto.randomBytes(16).toString('hex'),
-            })
-        )
+        try{
+            console.log("step")
+            const urlData = await SpotifyService.buildAuthURL()
+            req.session.spotifyState = urlData.state 
+            res.redirect(urlData.url)
+        } catch (err){
+            console.log(err)
+        }
     }
     async getSpotifyData(req,res){
-        //res.send('hi',req)
-        //console.log("hel",req.query)
+        if (req.session.spotifyState != req.query.state){
+            res.send("Error")
+        } else{
+            res.send('pending')
+            const cleanData = await SpotifyService.buildSpotifyData(req.query)
+            console.log(cleanData)
+        }
     }
 }
 

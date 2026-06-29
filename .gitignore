@@ -142,3 +142,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 testDB.js
+test_test.py
+test.py
