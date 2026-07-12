@@ -1,13 +1,13 @@
 const path = require('path')
-const DashboardService = require('../services/DashboardService');
+const userService  = require('../services/UserService');
 class DashboardController{
     constructor(){
     }
     async showDashboard(req,res){
         const userId = req.session.userID;
-        const userData = await DashboardService.getDashboardData(userId)
+        const user = await userService.getUser(userId)
         try{
-        res.render('dashboard', {name: userData.username})
+        res.render('dashboard', {name: user.username})
     } catch (err){
         res.status(500).send("Something went wrong")
     }
