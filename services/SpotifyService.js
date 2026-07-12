@@ -62,7 +62,7 @@ class SpotifyService{
             refresh_token: accessTokenData["refresh_token"],
             expires_at: expiresAt
             }
-        const modelResult = spotifyModel.saveTokens(spotifyPayload)
+        const modelResult = await spotifyModel.saveTokens(spotifyPayload)
         return modelResult
         //return accessTokenData
         
