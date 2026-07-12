@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const querystring = require('querystring')
 require('dotenv').config()
+const spotifyModel = require('../models/spotifyModel')
 
 class SpotifyService{
     constructor(){
@@ -50,13 +51,26 @@ class SpotifyService{
             return tokenData;
         }
     }
-    async buildSpotifyData(data){
+    async buildSpotifyData(data,userId){
         const rawData = data
         const authCode = rawData.code
-        const accessToken = await this.exchangeCodeforToken(authCode)
-        //console.log("the access token is", accessToken) 
+        const accessTokenData = await this.exchangeCodeforToken(authCode)
+        const expiresAt = new Date(Date.now() + accessTokenData["expires_in"] * 1000)
+        const spotifyPayload = {
+            user_id: userId,
+            access_token: accessTokenData["access_token"],
+            refresh_token: accessTokenData["refresh_token"],
+            expires_at: expiresAt
+            }
+        const modelResult = spotifyModel.saveTokens(spotifyPayload)
+        return modelResult
+        //return accessTokenData
         
         
+    }
+    async hasTokens(userID){
+        const tokenVerificaton = await spotifyModel.hasTokens(userID)
+        return tokenVerificaton
     }
 }
 
