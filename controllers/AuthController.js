@@ -1,6 +1,7 @@
 const path = require('path')
 const AuthService = require('../services/AuthService');
 const session = require('express-session')
+const SpotifyService = require('../services/SpotifyService');
 
 
 
@@ -27,7 +28,10 @@ class AuthController{
             if (result.checkPassword  === true){
                 req.session.userID = result.userId
                 req.session.save()
-                console.log(req.session.userID)
+                const hasSpotify = await SpotifyService.hasTokens(req.session.userID)
+                if (!hasSpotify){
+                    res.redirect('/spotify/connect')
+                }
                 res.redirect('/Wavelength/dashboard')
 
             }
