@@ -1,6 +1,7 @@
 
 const spotifyModel = require('../models/spotifyModel');
 const SpotifyService = require('../services/SpotifyService');
+const userService = require('../services/UserService');
 require('dotenv').config()
 
 class SpotifyController{
@@ -29,6 +30,10 @@ class SpotifyController{
                 res.send("Failed Connection, retry")
             }
         }
+    }
+    async showSpotifyData(req,res){
+        const user = await userService.getUser(req.session.userID)
+        res.render('data',{name: user.username})
     }
 }
 
