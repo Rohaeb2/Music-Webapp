@@ -1,4 +1,5 @@
 
+const spotifyModel = require('../models/spotifyModel');
 const SpotifyService = require('../services/SpotifyService');
 require('dotenv').config()
 
@@ -20,9 +21,13 @@ class SpotifyController{
         if (req.session.spotifyState != req.query.state){
             res.send("Error")
         } else{
-            res.send('pending')
-            const cleanData = await SpotifyService.buildSpotifyData(req.query)
-            console.log(cleanData)
+            const result = await SpotifyService.buildSpotifyData(req.query,req.session.userID)
+            if (result === true){
+                console.log("data built")
+                res.redirect('/Wavelength/dashboard')
+            } else{
+                res.send("Failed Connection, retry")
+            }
         }
     }
 }
