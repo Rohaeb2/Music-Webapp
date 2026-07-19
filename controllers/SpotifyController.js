@@ -35,6 +35,24 @@ class SpotifyController{
         const user = await userService.getUser(req.session.userID)
         res.render('data',{name: user.username})
     }
+    async getProfile(req,res){
+        const user = await userService.getUser(req.session.userID)
+        const profile = await SpotifyService.getProfileData(req.session.userID)
+        console.log("profile isss",profile.display_name)
+        res.render('profile', {name: user.username,
+            display_name: profile.display_name,
+            id: profile.account_id,          
+            type: profile.type,
+            spotify_uri: profile.uri,
+            followers: profile.followers.total,
+            profile_image: profile.profile_image
+        })
+    }
+    async showTopTracks(req,res){
+        const type = "tracks"
+        const topTracks = await SpotifyService.getTopData(req.session.userID,type)
+        res.render('top-tracks')
+    }
 }
 
 module.exports = new SpotifyController;
