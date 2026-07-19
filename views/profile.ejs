@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wavelength | Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+         <div class="header-container">
+            <div class="header-left">
+            <h1><a href="/">Wavelength</a></h1>
+            </div>
+    </header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/spotify/data">Spotify</a></li>
+                <li><a href="/">Settings</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+            
+
+            
+        </nav>
+    <main>
+        <div class="main-content">
+            </div>
+        </main>
+    <div id="profile">
+        <h1>Spotify Data</h1>
+                <ul>
+                    <li>Display Name: <span> <%= display_name %></span></li>
+                    <li>User ID: <span id="id"> <%= id %></span></li>
+                    <li>type: <span id="type"> <%= type %></span></li>
+                    <li>Spotify URI: <span id="url"> <%= spotify_uri %></span></li>
+                    <li>followers: <span id="link"></span> <%= followers %></li>
+                    <li>Profile Image <span id="image"> <%= profile_image %></span></li>    
+                </ul>
+            </div>
+</body>
+</html>
