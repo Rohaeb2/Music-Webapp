@@ -27,6 +27,11 @@ a{
 .header-left{
     padding-left: 2%;
 }
+#profile{
+    padding-left: 2%;
+    display: flex;
+    justify-content: flex-start;
+}
 .nav-links{
     position: sticky;
     top: 0;
@@ -85,4 +90,9 @@ a{
 }
 #forgot-password{
     padding-left: 40px;
+}
+#top-tracks{
+    padding-left: 2%;
+    display: flex;
+    justify-content: flex-start;
 }
