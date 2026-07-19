@@ -33,6 +33,40 @@ class spotifyModel{
         }
         
     }
+    async getToken(userID){
+        try{
+            const sql = 'SELECT * FROM spotify_tokens WHERE user_id = ? LIMIT 1';
+            const [rows] = await pool.query(sql, [userID])
+
+            if (rows.length === 0){
+                return false
+            } else{
+                return rows[0]
+            }
+        } catch (error){
+            console.log(error)
+        }
+    }
+    async updateToken(newTokenData){
+        try{
+            const sql = `UPDATE spotify_tokens
+            SET 
+            access_token = ?,
+            refresh_token = ?,
+            expires_at = ?
+            WHERE user_id = ?
+            `
+            const [rows] = await pool.query (sql, [newTokenData.access_token,newTokenData.refresh_token,newTokenData.expires_at,newTokenData.user_id])
+            if (rows.length === 0){
+                return false
+            } else{
+                return true
+            }
+        } catch (error){
+            console.log(error)
+        }
+
+    }
 }
 
 module.exports = new spotifyModel;
