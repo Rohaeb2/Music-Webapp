@@ -10,10 +10,12 @@ class SpotifyService{
     async buildAuthURL(req,res){
         console.log("hi")
         const buildState = crypto.randomBytes(16).toString('hex');
+        const scope = 'user-read-private user-read-email user-top-read user-read-recently-played'
         const authUrl = ('https://accounts.spotify.com/authorize?' +
             querystring.stringify({
                 response_type: 'code',
                 client_id: process.env.SPOTIFY_CLIENT_ID,
+                scope: scope,
                 redirect_uri: process.env.SPOTIFY_REDIRECT_URL,
                 state: buildState,
         })
@@ -134,6 +136,7 @@ class SpotifyService{
     }
     async getTopData(userID,type){
         const token = await spotifyModel.getToken(userID)
+        console.log(type)
         const newToken = await this.istokenExpired(token)
         const response = await fetch(`https://api.spotify.com/v1/me/top/${type}?time_range=medium_term&limit=20&offset=0`,{
             method: "GET",
