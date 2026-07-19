@@ -10,7 +10,6 @@ class AuthController{
         this.showLogin = this.showLogin.bind(this)
     }
     showLogin(req,res){
-        console.log(req)
         try{
         res.sendFile(path.join(__dirname,'..','views','login.html'))
     } catch (err){
