@@ -144,7 +144,17 @@ class SpotifyService{
                 Authorization: `Bearer ${newToken.access_token}`
             }
         });
-        console.log(await response.json())
+        const data = await response.json()
+        const len = data.items.length
+        const trackObject = [];
+        for (let i = 0; i < len;i++){
+            const track = {};
+            track.name = data.items[i].name
+            track.artist = data.items[i].artists[0].name
+            track.album = data.items[i].album.name
+            trackObject.push(track)
+        }
+        return trackObject;
     }
 }
 
