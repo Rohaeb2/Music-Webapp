@@ -31,7 +31,23 @@
             </div>
             <div id="top-tracks">
                 <h1>Top Tracks</h1>
+                <br><br>
+
             </div>
+            <table id="top-tracks-table" style="width: 100%;">
+                    <tr>
+                        <th>Track</th>
+                        <th>Artist</th>
+                        <th>Album</th>
+                    </tr>
+                    <% for (let i=0; i < tracks.length; i++){ %>
+                        <tr>
+                            <td><%= tracks[i].name %></td>
+                            <td><%= tracks[i].artist %></td>
+                            <td><%= tracks[i].album %></td>
+                        </tr>
+                    <% } %>
+                </table>
         </main>
 </body>
 </html>
