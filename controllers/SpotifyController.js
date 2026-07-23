@@ -51,7 +51,7 @@ class SpotifyController{
     async showTopTracks(req,res){
         const type = "tracks"
         const topTracks = await SpotifyService.getTopData(req.session.userID,type)
-        res.render('top-tracks')
+        res.render('top-tracks',{tracks: topTracks})
     }
 }
 
