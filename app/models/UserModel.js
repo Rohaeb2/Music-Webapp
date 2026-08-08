@@ -1,7 +1,7 @@
 const path = require('path')
 require('dotenv').config()
 const pool = require("../config/database")
-const User = require("../models/User")
+const User = require("./User")
 
 class UserModel{
     constructor(){

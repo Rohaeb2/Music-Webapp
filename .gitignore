@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 testDB.js
 test_test.py
 test.py
+test.js
+.gitignore

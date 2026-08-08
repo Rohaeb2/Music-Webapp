@@ -35,11 +35,24 @@
             </div>
             <button class="button" type="submit">Login</button><br>
             <a id="forgot-password" href="/">Forgot Password?</a><br>
-            <button class="button" type="submit">Sign Up</button>
+            <button class="button" id="signup-button" type="button">Sign Up</button>
         </form>
+        <img class="content-img" id="login-img"   src="/images/login-img.jpg" alt="dj-playing-music">
         </div>
-        <img class="content-img"   src="/images/login-img.jpg" alt="dj-playing-music">
         
 </div>
+    <div class="form-popup" id="signup-form">
+        <form action="/auth/signup" method="post">
+            <h1>Sign Up</h1>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <br>
+            <label for="password"><b>Password</b></label>
+            <input type="text" placeholder="Enter Password" name="password" required><br>
+            <button class="button" type="submit">Create Account</button><br>
+            <button class="button" type="button" id="cancel-form">Cancel</button>
+        </form>
+    </div>
+<script src="/js/login.js"></script>
 </body>
 </html>
