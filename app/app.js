@@ -30,7 +30,6 @@ app.use('/auth', AuthRouters)
 app.use('/spotify',SpotifyRouters)
 app.use('/Wavelength', DashboardRouters)
 
-
 app.listen(port,()=>{
     console.log(`Port ${port} is running!`)
 })
