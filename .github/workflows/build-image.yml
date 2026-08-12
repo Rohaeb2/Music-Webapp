@@ -9,7 +9,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        run: ls -la
       - name: Build Docker Image
-        run: docker build -f ./app/ --tag ${{env.DOCKER_IMAGE_NAME}}:$(date +%s) .
+        run: docker build --tag ${{env.DOCKER_IMAGE_NAME}}:$(date +%s) ./app
 
 
