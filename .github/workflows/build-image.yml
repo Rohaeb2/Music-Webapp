@@ -1,1 +1,15 @@
+env:
+  DOCKER_IMAGE_NAME: Node App
+name: Deploy images to Amazon ECR
+run-name: Building Docker Images
+on: [push]
+jobs:
+  Build Front - End Docker Image:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Build Docker Image
+        run: docker build ../app/ --tag ${{env.DOCKER_IMAGE_NAME}}:$(date +%s)
+
 
