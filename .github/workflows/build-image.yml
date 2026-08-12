@@ -4,7 +4,7 @@ name: Deploy images to Amazon ECR
 run-name: Building Docker Images
 on: [push]
 jobs:
-  Build Front - End Docker Image:
+  BuildFront-EndDockerImage:
     runs-on: ubuntu:latest
     steps:
       - name: Check out code
