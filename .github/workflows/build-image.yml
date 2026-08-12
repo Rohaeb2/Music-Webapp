@@ -1,5 +1,5 @@
 env:
-  DOCKER_IMAGE_NAME: Node-App
+  DOCKER_IMAGE_NAME: node-app
 name: Deploy images to Amazon ECR
 run-name: Building Docker Images
 on: [push]
