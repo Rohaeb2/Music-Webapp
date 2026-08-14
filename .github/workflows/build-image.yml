@@ -15,7 +15,7 @@ jobs:
       - name: List files
         run: ls -la
       - name: Build DB Docker Image
-        working-directory: ./config
+        working-directory: ./app/config
         run: docker build --tag ${{env.DOCKER_IMAGE_NAME_DB}}:$(date +%s) .
 
 
