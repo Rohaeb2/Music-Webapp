@@ -1,5 +1,6 @@
 env:
-  DOCKER_IMAGE_NAME: node-app
+  DOCKER_IMAGE_NAME_NODE: node-app
+  DOCKER_IMAGE_NAME_DB: db-app
 name: Deploy images to Amazon ECR
 run-name: Building Docker Images
 on: [push]
@@ -10,8 +11,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Build Docker Image
-        run: docker build --tag ${{env.DOCKER_IMAGE_NAME}}:$(date +%s) ./app
+        run: docker build --tag ${{env.DOCKER_IMAGE_NAME_NODE}}:$(date +%s) ./app
       - name: List files
         run: ls -la
+      - name: Build DB Docker Image
+        run: docker build --tag ${{env.DOCKER_IMAGE_NAME_DB}}:$(date +%s) ./app/config
+
 
 
