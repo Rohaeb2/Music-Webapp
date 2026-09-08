@@ -10,10 +10,19 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-      - name: Build Docker Image
-        run: docker build --tag ${{env.DOCKER_IMAGE_NAME_NODE}}:$(date +%s) ./app
-      - name: List files
-        run: ls -la
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.2.4
+        with:
+          aws-access-key-id: ${{ secrects.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrects.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          role-to-assume: ${{ secrects.AWS_ROLE_TO_ASSUME }}   
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push Docker Image
+        run: ../scripts/build-and-push.sh node-app ./app
       - name: Build DB Docker Image
         working-directory: ./app/config
         run: |
