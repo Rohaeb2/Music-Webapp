@@ -21,7 +21,8 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
-
+      - name: reclass user
+        run: chmod u+x ./scripts/build-and-push.sh
       - name: Build and push Docker Image
         run: ./scripts/build-and-push.sh node-app ./app
       - name: Build DB Docker Image
