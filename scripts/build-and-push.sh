@@ -11,6 +11,11 @@ IMAGE_NAME="$1"
 BUILD_CONTEXT="$2"
 IMAGE_TAG=$(date +%s)
 
+echo "Building Docker Image"
+
 docker build --tag "${IMAGE_NAME}:${IMAGE_TAG}" "${BUILD_CONTEXT}"
+
+echo "Completed building Docker Image"
+
 docker tag "${IMAGE_NAME}:${IMAGE_TAG}" "${ECR_URI}:${IMAGE_TAG}"
 docker push ${ECR_URI}:${IMAGE_TAG}
