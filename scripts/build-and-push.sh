@@ -3,10 +3,13 @@
 # Build and deploy to Amazon ECR
 echo "Initializing instance"
 set -e
+IMAGE_NAME="$1"
+BUILD_CONTEXT="$2"
+IMAGE_TAG=$(date +%s)
 
 echo "Building Docker Image"
 
-docker build --tag "$REGISTRY/$REPOSITORY:$IMAGE_TAG" .
+docker build --tag "${IMAGE_NAME}:${IMAGE_TAG}" "${BUILD_CONTEXT}"
 
 echo "Completed building Docker Image"
 
