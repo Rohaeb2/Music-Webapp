@@ -33,7 +33,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: node-web-app
           IMAGE_TAG: ${{ github.sha }}
-        run: ./scripts/build-and-push.sh node-app ./app
+        run: ./scripts/build-and-push.sh node-web-app ./app
       - name: Build DB Docker Image
         working-directory: ./app/config
         run: |
