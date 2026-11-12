@@ -15,4 +15,4 @@ echo "Completed building Docker Image"
 
 echo "pushing to ECR"
 
-docker push "$REGISTRY/$REPOSITORY:$IMAGE_TAG"
+docker push "$REGISTRY/${IMAGE_NAME}:$IMAGE_TAG"
