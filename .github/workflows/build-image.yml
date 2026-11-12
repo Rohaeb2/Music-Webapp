@@ -7,6 +7,10 @@ on: [push]
 jobs:
   BuildNode-appDockerImage:
     runs-on: ubuntu-latest
+
+    permissions: 
+      id-token: write
+      contents: read
     steps:
       - name: Check out code
         uses: actions/checkout@v4
