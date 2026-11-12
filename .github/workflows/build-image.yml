@@ -28,7 +28,11 @@ jobs:
           mask-password: 'false'
       - name: reclass user
         run: chmod u+x ./scripts/build-and-push.sh
-      - name: Build and push Docker Image
+      - name: Run Build and push Script
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: node-wed-app
+          IMAGE_TAG: ${{ github.sha }}
         run: ./scripts/build-and-push.sh node-app ./app
       - name: Build DB Docker Image
         working-directory: ./app/config
