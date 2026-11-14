@@ -31,7 +31,7 @@ jobs:
       - name: Run Build and push Script for Front End
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: node-web-app
+          REPOSITORY: wavelength_test
           IMAGE_TAG: ${{ github.sha }}
         run: ./scripts/build-and-push.sh node-web-app ./app
      
