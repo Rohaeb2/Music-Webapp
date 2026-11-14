@@ -9,7 +9,7 @@ IMAGE_TAG=$(date +%s)
 
 echo "Building Docker Image"
 
-docker build --tag "$REGISTRY/${IMAGE_NAME}:${IMAGE_TAG}" "${BUILD_CONTEXT}"
+docker build --tag "$REGISTRY/$REPOSITORY:${IMAGE_TAG}" "${BUILD_CONTEXT}"
 
 echo "Completed building Docker Image"
 
